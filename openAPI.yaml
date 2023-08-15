@@ -1,0 +1,74 @@
+openapi: 3.0.3
+info:
+  title: Onboarding API
+  description: |-
+   it's my student reference: STD22014
+  version: 1.0.11
+servers:
+  - url: https://STD22014.com
+paths:
+  /students:
+    post:
+      summary: Add a new student
+      description: Add a new student
+      operationId: addPet
+      requestBody:
+        description: Create a new student
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Student'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Student'          
+        '405':
+          description: Invalid input
+    
+    get:
+      summary: receive student
+      description: receive student
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Student'
+        '400':
+          description: Invalid status value
+components:
+  schemas:
+    Student:
+      required:
+        - name
+      type: object 
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 1 
+        name:
+          type: string
+          example: MIORA NOMENJANAHARY
+        birthDate:
+          type: string
+          format: date
+  requestBodies:
+    Pet:
+      description: Student object that needs to be added
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Student'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/Student'
+   
+  
