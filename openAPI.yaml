@@ -1,7 +1,7 @@
 openapi: 3.0.3
 info:
   title: Onboarding API
-  description: "it's my student reference: STD22014"
+  description: "It's my student reference: STD22014"
   version: 1.0.11
 servers:
   - url: https://STD22014.com
@@ -81,7 +81,7 @@ paths:
       tags:
         - Teachers
       summary: See all students
-      operationId: Teacher
+      operationId: getTeachers
       responses:
         '200':
           description: Results
@@ -125,6 +125,7 @@ paths:
                   firstname:
                     type: string
                   module:
+                    type: string
                     format: date
 
   /teachers/{teacherId}:
@@ -132,7 +133,7 @@ paths:
       tags:
         - Teachers
       summary: Update a Teacher
-      operationId: updateTeach
+      operationId: updateTeacher
       parameters:
         - name: teacherId
           in: path
@@ -174,8 +175,6 @@ paths:
 components:
   schemas:
     Student:
-      required:
-        - name
       type: object
       properties:
         id:
